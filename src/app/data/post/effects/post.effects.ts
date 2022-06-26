@@ -4,23 +4,20 @@ import { catchError, map, concatMap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import * as PostActions from '../actions/post.actions';
 
-
 @Injectable()
 export class PostEffects {
-
   loadPosts$ = createEffect(() => {
-    return this.actions$.pipe( 
-
+    return this.actions$.pipe(
       ofType(PostActions.loadPosts),
       concatMap(() =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
         EMPTY.pipe(
-          map(data => PostActions.loadPostsSuccess({ data })),
-          catchError(error => of(PostActions.loadPostsFailure({ error }))))
+          map((data) => PostActions.loadPostsSuccess({ data })),
+          catchError((error) => of(PostActions.loadPostsFailure({ error })))
+        )
       )
     );
   });
-
 
   constructor(private actions$: Actions) {}
 }
