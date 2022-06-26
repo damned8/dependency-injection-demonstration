@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { ANIMAL_API_INJECTION_TOKEN } from './app.module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'DItest';
+  constructor(@Inject(ANIMAL_API_INJECTION_TOKEN) api: any) {
+    console.log(api.getAll())
+  }
 }
