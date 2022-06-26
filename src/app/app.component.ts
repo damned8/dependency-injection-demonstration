@@ -1,5 +1,4 @@
-import { Component, Inject } from '@angular/core';
-import { ANIMAL_API_INJECTION_TOKEN } from './app.module';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,5 @@ import { ANIMAL_API_INJECTION_TOKEN } from './app.module';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(@Inject(ANIMAL_API_INJECTION_TOKEN) api: any) {
-    console.log(api.getAll())
-  }
+  constructor() {}
 }
