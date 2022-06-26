@@ -1,9 +1,9 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { BaseComponent } from 'src/app/utils/base-component';
 import { COMMENT_CONFIG_TOKEN, CommentConfig } from './comment.module';
 
 @Component({
-  selector: 'app-comment',
+  selector: 'article[app-comment]',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
 })
@@ -11,10 +11,12 @@ export class CommentComponent
   extends BaseComponent<CommentConfig>
   implements OnInit
 {
+  @Input('app-comment') inputConfig?: CommentConfig;
+
   constructor(
     @Optional()
     @Inject(COMMENT_CONFIG_TOKEN)
-    protected config: CommentConfig
+    protected config: Readonly<CommentConfig>
   ) {
     super();
   }

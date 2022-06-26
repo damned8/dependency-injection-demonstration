@@ -12,7 +12,7 @@ export const POST_API_PROVIDER = {
   provide: POST_API_PROVIDE_TOKEN,
   deps: [HttpClient],
   useFactory: (http: HttpClient) =>
-    new ApiService<Post, Post, Post, Post[]>(http, {
+    new ApiService<Partial<Post>, Post, Partial<Post>, Post[]>(http, {
       singleApi: (props) => `${environment.postsApi}/${props.id}`,
       pluralApi: (props) => `${environment.postsApi}`,
     }),
