@@ -4,13 +4,7 @@ import * as CommentActions from '../actions/comment.actions';
 
 export const commentFeatureKey = 'comment';
 
-export interface Comment {
-  postId: number;
-  id:     number;
-  name:   string;
-  email:  string;
-  body:   string;
-}
+
 export interface State extends  EntityState<Comment> {
 
 }

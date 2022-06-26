@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { ApiService } from './utils/api/api.service';
+import { POST_API_PROVIDE_TOKEN } from './utils/post-api-provider';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(@Inject(POST_API_PROVIDE_TOKEN) api: ApiService<any, any, any, any>) {
+    console.log(api)
+  }
 }

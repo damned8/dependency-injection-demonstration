@@ -1,15 +1,10 @@
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
+import { Post } from 'src/app/models/post';
 import * as PostActions from '../actions/post.actions';
 
 export const postFeatureKey = 'post';
 
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: boolean;
-}
 export interface State extends EntityState<Comment> {}
 
 export const initialState: State = {

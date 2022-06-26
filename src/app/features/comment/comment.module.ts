@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { CommentRoutingModule } from './comment-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    CommentRoutingModule
-  ]
+  imports: [CommonModule, CommentRoutingModule],
 })
-export class CommentModule { }
+export class CommentModule {}
