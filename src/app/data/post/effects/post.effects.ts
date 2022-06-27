@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, tap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import * as PostActions from '../actions/post.actions';
+import { POST_API_PROVIDE_TOKEN } from 'src/app/utils/api/post-api-provider';
+import { Post } from 'src/app/models/post';
+import { ApiService } from 'src/app/utils/api/api.service';
 
 @Injectable()
 export class PostEffects {
@@ -10,8 +13,8 @@ export class PostEffects {
     return this.actions$.pipe(
       ofType(PostActions.loadPosts),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
+        this.postApi.getAll({}).pipe(
+          tap((data) => console.log(data)),
           map((data) => PostActions.loadPostsSuccess({ data })),
           catchError((error) => of(PostActions.loadPostsFailure({ error })))
         )
@@ -19,5 +22,9 @@ export class PostEffects {
     );
   });
 
-  constructor(private actions$: Actions) {}
+  constructor(
+    private actions$: Actions,
+    @Inject(POST_API_PROVIDE_TOKEN)
+    private postApi: ApiService<Partial<Post>, Post, Partial<Post>, Post[]>
+  ) {}
 }

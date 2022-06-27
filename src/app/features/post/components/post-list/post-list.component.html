@@ -5,3 +5,8 @@
         <div app-post-header>header</div>
     </article>
 </section>
+<ng-container *ngIf="(posts$ | async) as posts">
+    <ng-container>{{posts | json}}</ng-container>
+</ng-container>
+
+<div></div>

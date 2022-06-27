@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
     private postApi: ApiService<Partial<Post>, Post, Partial<Post>, Post[]>
   ) {}
   ngOnInit(): void {
-    this.postApi.getAll({}).subscribe(v => console.log(v))
+    // this.postApi.getAll({}).subscribe(v => console.log(v))
   }
 }

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ApiService } from './api.service';
 
 export const POST_API_PROVIDE_TOKEN = new InjectionToken(
-  'TEST_API_PROVIDE_TOKEN'
+  'POST_API_PROVIDE_TOKEN'
 );
 
 export const POST_API_PROVIDER = {
